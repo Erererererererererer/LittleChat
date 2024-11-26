@@ -17,8 +17,8 @@ public class UserService {
         userMapper.insert(user);
     }
 
-    public void deleteById(Integer uid) {
-        userMapper.deleteById(uid);
+    public void deleteById(Integer id) {
+        userMapper.deleteById(id);
     }
 
     public void update(User user) {
@@ -29,7 +29,7 @@ public class UserService {
         return userMapper.selectAll();
     }
 
-    public User selectById(Integer uid) {
-        return userMapper.selectById(uid);
+    public User findById(Integer id) {
+        return userMapper.selectById(id);
     }
 }

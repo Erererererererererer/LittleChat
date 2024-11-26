@@ -5,21 +5,22 @@
 <mapper namespace="com.bitcser.littlechat.mapper.UserMapper">
 
     <insert id="insert" parameterType="com.bitcser.littlechat.entity.User">
-        INSERT INTO `user` (uid, password, name)
-        VALUES (#{uid}, #{password}, #{name})
+        INSERT INTO `users` (id, username, password, avatar, email, phone, gender)
+        VALUES (#{id}, #{username}, #{password}, #{avatar}, #{email}, #{phone}, #{gender})
     </insert>
 
     <update id="updateById" parameterType="com.bitcser.littlechat.entity.User">
-        UPDATE `user` SET password = #{password}, name = #{name}
-        WHERE uid = #{uid}
+        UPDATE `users` SET username = #{username},  password = #{password}, avatar = #{avatar}, email = #{email},
+                           phone = #{phone}, gender = #{gender}
+        WHERE id = #{id}
     </update>
 
     <select id="selectAll" resultType="com.bitcser.littlechat.entity.User">
-        SELECT * FROM user
+        SELECT * FROM `users`
     </select>
 
     <select id="selectById" resultType="com.bitcser.littlechat.entity.User">
-        SELECT * FROM user WHERE uid = #{uid}
+        SELECT * FROM `users` WHERE id = #{id}
     </select>
 
 </mapper>

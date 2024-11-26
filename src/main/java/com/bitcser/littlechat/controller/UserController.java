@@ -22,8 +22,8 @@ public class UserController {
     }
 
     @DeleteMapping("/deleteById")
-    public Result delete(@RequestParam Integer uid) {
-        userService.deleteById(uid);
+    public Result delete(@RequestParam Integer id) {
+        userService.deleteById(id);
         return Result.success();
     }
 
@@ -39,9 +39,9 @@ public class UserController {
         return Result.success(userList);
     }
 
-    @GetMapping("/selectById")
-    public Result selectById(@RequestParam Integer uid) {
-        User user =  userService.selectById(uid);
+    @GetMapping("/findById")
+    public Result findById(@RequestParam Integer id) {
+        User user =  userService.findById(id);
         return Result.success(user);
     }
 

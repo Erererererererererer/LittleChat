@@ -9,12 +9,12 @@ public interface UserMapper {
 
     void insert(User user);
 
-    @Delete("DELETE FROM `user` WHERE uid = #{uid}")
-    void deleteById(Integer uid);
+    @Delete("DELETE FROM `users` WHERE id = #{id}")
+    void deleteById(Integer id);
 
     void updateById(User user);
 
     List<User> selectAll();
 
-    User selectById(Integer uid);
+    User selectById(Integer id);
 }
