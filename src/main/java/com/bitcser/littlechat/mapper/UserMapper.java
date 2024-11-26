@@ -9,7 +9,6 @@ public interface UserMapper {
 
     void insert(User user);
 
-    @Delete("DELETE FROM `users` WHERE id = #{id}")
     void deleteById(Integer id);
 
     void updateById(User user);

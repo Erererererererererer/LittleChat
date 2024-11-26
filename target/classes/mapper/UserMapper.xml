@@ -9,6 +9,10 @@
         VALUES (#{id}, #{username}, #{password}, #{avatar}, #{email}, #{phone}, #{gender})
     </insert>
 
+    <delete id="deleteById" parameterType="com.bitcser.littlechat.entity.User">
+        DELETE FROM `users` WHERE id = #{id}
+    </delete>
+
     <update id="updateById" parameterType="com.bitcser.littlechat.entity.User">
         UPDATE `users` SET username = #{username},  password = #{password}, avatar = #{avatar}, email = #{email},
                            phone = #{phone}, gender = #{gender}
