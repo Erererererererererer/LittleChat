@@ -1,0 +1,20 @@
+server:
+  port: 8090
+
+# 数据库配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 200125
+    url: jdbc:mysql://localhost:3306/littlechat
+
+# 配置mybatis实体和xml映射
+mybatis:
+  # 映射xml的路径
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    # 配置日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 数据库字段的下划线转成java字段的驼峰表示
+    map-underscore-to-camel-case: true
