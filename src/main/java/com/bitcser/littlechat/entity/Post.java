@@ -1,5 +1,8 @@
 package com.bitcser.littlechat.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.sql.Timestamp;
 
 public class Post {
@@ -7,6 +10,8 @@ public class Post {
     private Integer userId;
     private String content;
     private String imageUrl;
+//    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+//    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Timestamp createdAt;
 
     public Integer getId() {
