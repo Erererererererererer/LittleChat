@@ -6,6 +6,7 @@ import com.bitcser.littlechat.service.MessageService;
 import com.bitcser.littlechat.websocket.ChannelContextUtils;
 import com.bitcser.littlechat.service.UserService;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.netty.channel.*;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
@@ -79,7 +80,9 @@ public class HandlerWebSocket extends SimpleChannelInboundHandler<TextWebSocketF
 
         // 发送反馈消息
         String receiverId = result.getReceiverId();
-        String message = result.toString();
+        // 将Result对象序列化为JSON字符串
+        ObjectMapper mapper = new ObjectMapper();
+        String message = mapper.writeValueAsString(result);
         channelContextUtils.sendMessage(userId, message);
         if (receiverId != null) {
             // 发送聊天消息（如果用户在线，则直接发送；不在线则存数据库）
@@ -87,8 +90,8 @@ public class HandlerWebSocket extends SimpleChannelInboundHandler<TextWebSocketF
                 channelContextUtils.sendMessage(receiverId, message);
             } else {
                 // 存message，更新record
-                messageService.add(Integer.valueOf(userId), Integer.valueOf(receiverId), message);
-                chatRecordSevice.update(Integer.valueOf(userId), Integer.valueOf(receiverId), message);
+                messageService.add(Integer.valueOf(userId), Integer.valueOf(receiverId), (String)result.getData());
+                chatRecordSevice.update(Integer.valueOf(userId), Integer.valueOf(receiverId), (String)result.getData());
             }
         }
     }

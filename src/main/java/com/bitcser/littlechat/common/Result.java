@@ -46,15 +46,6 @@ public class Result {
         this.receiverId = receiverId;
     }
 
-    @Override
-    public String toString() {
-        return "Result{" +
-                "code='" + code + '\'' +
-                ", msg='" + msg + '\'' +
-                ", data=" + data +
-                '}';
-    }
-
     public static Result success() {
         Result result = new Result();
         result.setCode("200");

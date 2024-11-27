@@ -55,7 +55,7 @@ public class NettyWebSocketStarter implements Runnable {
                             // 聚合解码，httpRequest/httpContent/lastHttpContent到fullHttpRequest，保证接收的http请求的完整性
                             pipeline.addLast(new HttpObjectAggregator(64*1024));
                             // 心跳 long readerIdleTime读超时, long writerIdleTime写超时, long allIdleTime所有类型的超时时间, TimeUnit unit
-                            pipeline.addLast(new IdleStateHandler(60, 0, 0, TimeUnit.SECONDS));
+                            pipeline.addLast(new IdleStateHandler(600, 0, 0, TimeUnit.SECONDS));
                             pipeline.addLast(new HandlerHeartBeat());
                             // 将http协议升级为ws协议，对websocket支持，url: ws://localhost:port/ws
                             pipeline.addLast(new WebSocketServerProtocolHandler("/ws", null, true, 65536, false, true));
