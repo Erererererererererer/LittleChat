@@ -27,9 +27,15 @@ public class ChannelContextUtils {
         USER_CONTEXT_MAP.put(userId, channel);
     }
 
-    public void sendMessage(String senderId, String receiverId, String message) {
+    // 配合HandlerWebSocket0使用
+//    public void sendMessage(String senderId, String receiverId, String message) {
+//        Channel channel = USER_CONTEXT_MAP.get(receiverId);
+//        channel.writeAndFlush(new TextWebSocketFrame(senderId + "/" + message));
+//    }
+
+    public void sendMessage(String receiverId, String message) {
         Channel channel = USER_CONTEXT_MAP.get(receiverId);
-        channel.writeAndFlush(new TextWebSocketFrame(senderId + "/" + message));
+        channel.writeAndFlush(new TextWebSocketFrame(message));
     }
 
 }

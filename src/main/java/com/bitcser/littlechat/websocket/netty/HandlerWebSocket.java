@@ -1,4 +1,6 @@
 package com.bitcser.littlechat.websocket.netty;
+import com.bitcser.littlechat.common.Receive;
+import com.bitcser.littlechat.common.Result;
 import com.bitcser.littlechat.service.ChatRecordSevice;
 import com.bitcser.littlechat.service.MessageService;
 import com.bitcser.littlechat.websocket.ChannelContextUtils;
@@ -15,14 +17,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import javax.imageio.stream.ImageOutputStream;
 import java.util.Arrays;
 
+// handler（新版，对应逻辑为无条件建立socket连接，登录一起放入后续操作）
 @Component
 @ChannelHandler.Sharable
 public class HandlerWebSocket extends SimpleChannelInboundHandler<TextWebSocketFrame> {
 
     @Resource
     private ChannelContextUtils channelContextUtils;
+
+    @Resource
+    private Receive receive;
 
     @Resource
     private UserService userService;
@@ -55,57 +62,35 @@ public class HandlerWebSocket extends SimpleChannelInboundHandler<TextWebSocketF
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame textWebSocketFrame) throws Exception {
         Channel channel = ctx.channel();
+        String text = textWebSocketFrame.text(); // 消息内容
 
-        // 获取用户ID
-        Attribute<String> attribute = channel.attr(AttributeKey.valueOf(channel.id().toString()));
-        String userId = attribute.get();
-        logger.info("收到{}的消息：{}", userId, textWebSocketFrame.text());
-
-        // 解析消息并发送
-        String receiverId = textWebSocketFrame.text().split("/")[0];
-        String message = textWebSocketFrame.text().split("/")[1];
-        // 如果用户在线，则直接发送
-        if (userService.online(Integer.valueOf(receiverId))) {
-            channelContextUtils.sendMessage(userId, receiverId, message);
-        } else {
-            // 存message，更新record
-            messageService.add(Integer.valueOf(userId), Integer.valueOf(receiverId), message);
-            chatRecordSevice.update(Integer.valueOf(userId), Integer.valueOf(receiverId), message);
-        }
-    }
-
-    @Override
-    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
-        if (evt instanceof WebSocketServerProtocolHandler.HandshakeComplete) {
-            WebSocketServerProtocolHandler.HandshakeComplete complete = (WebSocketServerProtocolHandler.HandshakeComplete) evt;
-            String url = complete.requestUri();
-            // 验证用户ID
-            String userId = getUserId(url);
-            if (userId == null) {
-                ctx.channel().close();
-            }
-
+        String userId = null;
+        receive.splitText(text);
+        if (receive.getModule().equals("user") && receive.getService().equals("login")) {
+            userId = receive.getParamsMap().get("id");
             // 绑定channel和用户ID
             channelContextUtils.addContext(userId, ctx.channel());
-            // 修改为在线
-            userService.updateOnline(Integer.valueOf(userId), true);
+        } else {
+            // 获取用户ID
+            Attribute<String> attribute = channel.attr(AttributeKey.valueOf(channel.id().toString()));
+            userId = attribute.get();
+        }
+        Result result = receive.runService();
+
+        // 发送反馈消息
+        String receiverId = result.getReceiverId();
+        String message = result.toString();
+        channelContextUtils.sendMessage(userId, message);
+        if (receiverId != null) {
+            // 发送聊天消息（如果用户在线，则直接发送；不在线则存数据库）
+            if (userService.online(Integer.valueOf(receiverId))) {
+                channelContextUtils.sendMessage(receiverId, message);
+            } else {
+                // 存message，更新record
+                messageService.add(Integer.valueOf(userId), Integer.valueOf(receiverId), message);
+                chatRecordSevice.update(Integer.valueOf(userId), Integer.valueOf(receiverId), message);
+            }
         }
     }
 
-    // 解析连接时的用户ID
-    private String getUserId(String url) {
-        if (url.isEmpty() || !url.contains("?")) {
-            // 如果url为空或没带参数
-            return null;
-        }
-        String[] params = url.split("\\?");
-        if (params.length != 2) {
-            return null;
-        }
-        String[] paramList = params[1].split("=");
-        if (paramList.length != 2 || !paramList[0].equals("id")) {
-            return null;
-        }
-        return paramList[1];
-    }
 }

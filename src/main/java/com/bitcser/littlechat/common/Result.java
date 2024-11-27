@@ -5,6 +5,7 @@ package com.bitcser.littlechat.common;
  */
 public class Result {
 
+    private String receiverId;
     private String code;
     private String msg;
     private Object data;
@@ -35,6 +36,23 @@ public class Result {
 
     public void setData(Object data) {
         this.data = data;
+    }
+
+    public String getReceiverId() {
+        return receiverId;
+    }
+
+    public void setReceiverId(String receiverId) {
+        this.receiverId = receiverId;
+    }
+
+    @Override
+    public String toString() {
+        return "Result{" +
+                "code='" + code + '\'' +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
     }
 
     public static Result success() {
