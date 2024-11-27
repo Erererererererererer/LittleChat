@@ -1,12 +1,13 @@
 package com.bitcser.littlechat.websocket.netty;
 
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelDuplexHandler;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
+import com.bitcser.littlechat.websocket.ChannelContextUtils;
+import io.netty.channel.*;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.timeout.IdleStateEvent;
+import io.netty.util.Attribute;
+import io.netty.util.AttributeKey;
+import jakarta.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -14,7 +15,11 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 
 @Component
+@ChannelHandler.Sharable
 public class HandlerWebSocket extends SimpleChannelInboundHandler<TextWebSocketFrame> {
+
+    @Resource
+    private ChannelContextUtils channelContextUtils;
 
     private static final Logger logger = LoggerFactory.getLogger(HandlerWebSocket.class);
 
@@ -32,7 +37,16 @@ public class HandlerWebSocket extends SimpleChannelInboundHandler<TextWebSocketF
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame textWebSocketFrame) throws Exception {
         Channel channel = ctx.channel();
-        logger.info("收到消息{}", textWebSocketFrame.text());
+
+        // 获取用户ID
+        Attribute<String> attribute = channel.attr(AttributeKey.valueOf(channel.id().toString()));
+        String userId = attribute.get();
+        logger.info("收到{}的消息：{}", userId, textWebSocketFrame.text());
+
+        // 解析消息
+        String receiverId = textWebSocketFrame.text().split("/")[0];
+        String message = textWebSocketFrame.text().split("/")[1];
+        channelContextUtils.sendMessage(userId, receiverId, message);
     }
 
     @Override
@@ -41,14 +55,14 @@ public class HandlerWebSocket extends SimpleChannelInboundHandler<TextWebSocketF
             WebSocketServerProtocolHandler.HandshakeComplete complete = (WebSocketServerProtocolHandler.HandshakeComplete) evt;
             String url = complete.requestUri();
             // 验证用户ID
-            String id = getUserId(url);
-            if (id == null) {
+            String userId = getUserId(url);
+            if (userId == null) {
                 ctx.channel().close();
             }
-            logger.info("url: {}", url);
-            logger.info("id: {}", id);
+
+            // 绑定channel和用户ID
+            channelContextUtils.addContext(userId, ctx.channel());
         }
-        super.userEventTriggered(ctx, evt);
     }
 
     // 解析连接时的用户ID
