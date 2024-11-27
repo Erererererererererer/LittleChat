@@ -5,13 +5,22 @@
 <mapper namespace="com.bitcser.littlechat.mapper.MessageMapper">
 
     <insert id="insert" parameterType="com.bitcser.littlechat.entity.Message">
-        INSERT INTO `messages` (sender_id, receiver_id, content, message_type, status, time)
-        VALUES (#{senderId}, #{receiverId}, #{content}, #{messageType}, #{status}, #{time})
+        INSERT INTO `messages` (id, sender_id, receiver_id, content, message_type, status, time)
+        VALUES (#{id}, #{senderId}, #{receiverId}, #{content}, #{messageType}, #{status}, #{time})
     </insert>
 
-    <select id="selectById" parameterType="com.bitcser.littlechat.entity.Message" resultType="com.bitcser.littlechat.entity.Message">
-        SELECT * FROM `messages` WHERE id = #{id}
-    </select>
+    <delete id="deleteById" parameterType="com.bitcser.littlechat.entity.Message">
+        DELETE FROM `messages` WHERE sender_id = #{senderId} &amp;&amp; receiver_id = #{receiverId}
+    </delete>
 
+    <update id="updateById" parameterType="com.bitcser.littlechat.entity.Message">
+        UPDATE `messages` SET status = 0
+        WHERE id = #{id}
+    </update>
+
+    <select id="selectAll" resultType="com.bitcser.littlechat.entity.Message">
+        SELECT * FROM messages
+        WHERE (sender_id = #{senderId} AND receiver_id = #{receiverId}) OR (sender_id = #{receiverId} AND receiver_id = #{senderId})
+    </select>
 
 </mapper>

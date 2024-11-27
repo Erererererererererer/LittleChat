@@ -10,12 +10,17 @@
     </insert>
 
     <update id="updateById" parameterType="com.bitcser.littlechat.entity.ChatRecord">
-        UPDATE `chat_records` SET last_message = #{lastMessage},  updated_at = #{updatedAt},
-                                  unread_count = #{unreadCount}, is_group = #{isGroup}
+        UPDATE `chat_records` SET last_message = #{lastMessage},  updated_at = #{updatedAt}, unread_count = #{unreadCount}
         WHERE id = #{id}
     </update>
 
-    <select id="selectByIds" parameterType="com.bitcser.littlechat.entity.ChatRecord" resultType="com.bitcser.littlechat.entity.ChatRecord">
+    <select id="selectAll" resultType="com.bitcser.littlechat.entity.ChatRecord">
+        SELECT * FROM `chat_records`
+        WHERE sender_id = #{senderId}
+    </select>
+
+
+    <select id="selectByIds" resultType="com.bitcser.littlechat.entity.ChatRecord">
         SELECT * FROM `chat_records` WHERE sender_id = #{senderId} AND receiver_id = #{receiverId}
     </select>
 

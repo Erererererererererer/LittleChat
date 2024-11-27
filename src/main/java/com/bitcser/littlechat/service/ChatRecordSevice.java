@@ -8,6 +8,7 @@ import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Service
 public class ChatRecordSevice {
@@ -20,7 +21,7 @@ public class ChatRecordSevice {
     // 新增会话记录
     public void add(Integer senderId, Integer receiverId, String lastMessage) {
         // 新增时未读消息数自动设置为1
-        ChatRecord chatRecord = new ChatRecord(senderId, receiverId, lastMessage,
+        ChatRecord chatRecord = new ChatRecord(null, senderId, receiverId, lastMessage,
                 new Timestamp(System.currentTimeMillis()), 1, 0);
         chatRecordMapper.insert(chatRecord);
     }
@@ -37,8 +38,13 @@ public class ChatRecordSevice {
             chatRecord.setLastMessage(lastMessage);
             chatRecord.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
             chatRecord.setUnreadCount(chatRecord.getUnreadCount() + 1);
-            chatRecordMapper.updateById(chatRecord.getId(), chatRecord);
+            chatRecordMapper.updateById(chatRecord);
         }
+    }
+
+    // 查询所有某人发出的所有会话
+    public List<ChatRecord> findAll(Integer senderId) {
+        return chatRecordMapper.selectAll(senderId);
     }
 
     // 查询会话记录

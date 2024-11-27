@@ -11,7 +11,8 @@ public class ChatRecord {
     private Integer unreadCount;
     private Integer isGroup;
 
-    public ChatRecord(Integer senderId, Integer receiverId, String lastMessage, Timestamp updatedAt, Integer unreadCount, Integer isGroup) {
+    public ChatRecord(Integer id, Integer senderId, Integer receiverId, String lastMessage, Timestamp updatedAt, Integer unreadCount, Integer isGroup) {
+        this.id = id;
         this.senderId = senderId;
         this.receiverId = receiverId;
         this.lastMessage = lastMessage;
