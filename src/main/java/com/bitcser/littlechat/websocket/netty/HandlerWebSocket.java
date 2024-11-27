@@ -1,6 +1,9 @@
 package com.bitcser.littlechat.websocket.netty;
-
+import com.bitcser.littlechat.service.ChatRecordSevice;
+import com.bitcser.littlechat.service.MessageService;
 import com.bitcser.littlechat.websocket.ChannelContextUtils;
+import com.bitcser.littlechat.service.UserService;
+
 import io.netty.channel.*;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
@@ -21,6 +24,15 @@ public class HandlerWebSocket extends SimpleChannelInboundHandler<TextWebSocketF
     @Resource
     private ChannelContextUtils channelContextUtils;
 
+    @Resource
+    private UserService userService;
+
+    @Resource
+    private MessageService messageService;
+
+    @Resource
+    private ChatRecordSevice chatRecordSevice;
+
     private static final Logger logger = LoggerFactory.getLogger(HandlerWebSocket.class);
 
     //  通道就绪后调用，一般用来做初始化
@@ -32,6 +44,12 @@ public class HandlerWebSocket extends SimpleChannelInboundHandler<TextWebSocketF
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         logger.info("有连接断开...");
+        // 获取用户ID
+        Channel channel = ctx.channel();
+        Attribute<String> attribute = channel.attr(AttributeKey.valueOf(channel.id().toString()));
+        String userId = attribute.get();
+        // 修改为离线
+        userService.updateOnline(Integer.valueOf(userId), false);
     }
 
     @Override
@@ -43,10 +61,17 @@ public class HandlerWebSocket extends SimpleChannelInboundHandler<TextWebSocketF
         String userId = attribute.get();
         logger.info("收到{}的消息：{}", userId, textWebSocketFrame.text());
 
-        // 解析消息
+        // 解析消息并发送
         String receiverId = textWebSocketFrame.text().split("/")[0];
         String message = textWebSocketFrame.text().split("/")[1];
-        channelContextUtils.sendMessage(userId, receiverId, message);
+        // 如果用户在线，则直接发送
+        if (userService.online(Integer.valueOf(receiverId))) {
+            channelContextUtils.sendMessage(userId, receiverId, message);
+        } else {
+            // 存message，更新record
+            messageService.add(Integer.valueOf(userId), Integer.valueOf(receiverId), message);
+            chatRecordSevice.update(Integer.valueOf(userId), Integer.valueOf(receiverId), message);
+        }
     }
 
     @Override
@@ -62,6 +87,8 @@ public class HandlerWebSocket extends SimpleChannelInboundHandler<TextWebSocketF
 
             // 绑定channel和用户ID
             channelContextUtils.addContext(userId, ctx.channel());
+            // 修改为在线
+            userService.updateOnline(Integer.valueOf(userId), true);
         }
     }
 

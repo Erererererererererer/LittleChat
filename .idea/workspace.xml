@@ -4,12 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff8167c7-afd3-4c1d-a9f1-36fa7952d0b3" name="更改" comment="netty初始化">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/websocket/ChannelContextUtils.java" afterDir="false" />
+    <list default="true" id="ff8167c7-afd3-4c1d-a9f1-36fa7952d0b3" name="更改" comment="websocket">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/mapper/ChatRecordMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/mapper/MessageMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/service/ChatRecordSevice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/service/MessageService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/ChatRecordMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/MessageMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/376e26a4-c6aa-4a36-bb8d-3882046425d7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/376e26a4-c6aa-4a36-bb8d-3882046425d7.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/websocket/netty/HandlerHeartBeat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/websocket/netty/HandlerHeartBeat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/entity/ChatRecords.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/entity/ChatRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/entity/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/entity/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/mapper/FriendMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/mapper/FriendMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/websocket/netty/HandlerWebSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/websocket/netty/HandlerWebSocket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/websocket/netty/NettyWebSocketStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/websocket/netty/NettyWebSocketStarter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bitcser/littlechat/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bitcser/littlechat/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bitcser/littlechat/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bitcser/littlechat/mapper/UserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bitcser/littlechat/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bitcser/littlechat/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +35,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -50,7 +66,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -138,7 +154,7 @@
       <workItem from="1732620039379" duration="216000" />
       <workItem from="1732620261859" duration="563000" />
       <workItem from="1732635360573" duration="1964000" />
-      <workItem from="1732673796171" duration="6690000" />
+      <workItem from="1732673796171" duration="18766000" />
     </task>
     <task id="LOCAL-00001" summary="框架Demo">
       <option name="closed" value="true" />
@@ -196,7 +212,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732636630648</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="websocket">
+      <option name="closed" value="true" />
+      <created>1732686875181</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1732686875181</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,6 +243,7 @@
     <MESSAGE value="新增实体类" />
     <MESSAGE value="FriendMapper" />
     <MESSAGE value="netty初始化" />
-    <option name="LAST_COMMIT_MESSAGE" value="netty初始化" />
+    <MESSAGE value="websocket" />
+    <option name="LAST_COMMIT_MESSAGE" value="websocket" />
   </component>
 </project>

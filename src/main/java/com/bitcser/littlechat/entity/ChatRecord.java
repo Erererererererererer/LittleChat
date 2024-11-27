@@ -2,7 +2,7 @@ package com.bitcser.littlechat.entity;
 
 import java.sql.Timestamp;
 
-public class ChatRecords {
+public class ChatRecord {
     private Integer id;
     private Integer senderId;
     private Integer receiverId;
@@ -10,6 +10,28 @@ public class ChatRecords {
     private Timestamp updatedAt;
     private Integer unreadCount;
     private Integer isGroup;
+
+    public ChatRecord(Integer senderId, Integer receiverId, String lastMessage, Timestamp updatedAt, Integer unreadCount, Integer isGroup) {
+        this.senderId = senderId;
+        this.receiverId = receiverId;
+        this.lastMessage = lastMessage;
+        this.updatedAt = updatedAt;
+        this.unreadCount = unreadCount;
+        this.isGroup = isGroup;
+    }
+
+    @Override
+    public String toString() {
+        return "ChatRecord{" +
+                "id=" + id +
+                ", senderId=" + senderId +
+                ", receiverId=" + receiverId +
+                ", lastMessage='" + lastMessage +
+                ", updatedAt=" + updatedAt +
+                ", unreadCount=" + unreadCount +
+                ", isGroup=" + isGroup +
+                '}';
+    }
 
     public Integer getId() {
         return id;

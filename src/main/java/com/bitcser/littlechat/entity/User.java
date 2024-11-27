@@ -8,6 +8,7 @@ public class User {
     private String email;
     private String phone;
     private Integer gender;
+    private Integer online;
 
     @Override
     public String toString() {
@@ -18,7 +19,8 @@ public class User {
                 ", avatar='" + avatar + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
-                ", gender=" + gender +
+                ", gender=" + gender + '\'' +
+                ", online=" + online +
                 '}';
     }
 
@@ -76,5 +78,13 @@ public class User {
 
     public void setGender(Integer gender) {
         this.gender = gender;
+    }
+
+    public Integer getOnline() {
+        return online;
+    }
+
+    public void setOnline(Integer online) {
+        this.online = online;
     }
 }

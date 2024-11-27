@@ -5,8 +5,8 @@
 <mapper namespace="com.bitcser.littlechat.mapper.UserMapper">
 
     <insert id="insert" parameterType="com.bitcser.littlechat.entity.User">
-        INSERT INTO `users` (id, username, password, avatar, email, phone, gender)
-        VALUES (#{id}, #{username}, #{password}, #{avatar}, #{email}, #{phone}, #{gender})
+        INSERT INTO `users` (id, username, password, avatar, email, phone, gender, online)
+        VALUES (#{id}, #{username}, #{password}, #{avatar}, #{email}, #{phone}, #{gender}, #{online})
     </insert>
 
     <delete id="deleteById" parameterType="com.bitcser.littlechat.entity.User">
@@ -16,6 +16,11 @@
     <update id="updateById" parameterType="com.bitcser.littlechat.entity.User">
         UPDATE `users` SET username = #{username},  password = #{password}, avatar = #{avatar}, email = #{email},
                            phone = #{phone}, gender = #{gender}
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateOnlineById" parameterType="com.bitcser.littlechat.entity.User">
+        UPDATE `users` SET online = #{online}
         WHERE id = #{id}
     </update>
 

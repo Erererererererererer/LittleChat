@@ -15,6 +15,9 @@ public interface UserMapper {
     // 根据ID改
     void updateById(User user);
 
+    // 根据ID改online字段
+    void updateOnlineById(Integer id, Integer online);
+
     // 查所有
     List<User> selectAll();
 

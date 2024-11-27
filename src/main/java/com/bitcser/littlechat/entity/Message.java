@@ -11,6 +11,15 @@ public class Message {
     private Integer status;
     private Timestamp time;
 
+    public Message(Integer senderId, Integer receiverId, String content, Integer messageType, Integer status, Timestamp time) {
+        this.senderId = senderId;
+        this.receiverId = receiverId;
+        this.content = content;
+        this.messageType = messageType;
+        this.status = status;
+        this.time = time;
+    }
+
     public Integer getId() {
         return id;
     }
