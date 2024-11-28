@@ -18,9 +18,9 @@ public class ChannelContextUtils {
         String channelId = channel.id().toString();
         AttributeKey attributeKey = null;
         if (AttributeKey.exists(channelId)) {
-            attributeKey = AttributeKey.newInstance(channelId);
-        } else {
             attributeKey = AttributeKey.valueOf(channelId);
+        } else {
+            attributeKey = AttributeKey.newInstance(channelId);
         }
         channel.attr(attributeKey).set(userId);
 
