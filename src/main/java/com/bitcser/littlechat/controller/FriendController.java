@@ -3,7 +3,6 @@ package com.bitcser.littlechat.controller;
 import com.bitcser.littlechat.common.Result;
 import com.bitcser.littlechat.entity.Friend;
 import com.bitcser.littlechat.service.FriendService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,8 +33,8 @@ public class FriendController {
     }
 
     @GetMapping("/findAll")
-    public Result findAll(@RequestParam Integer id) {
-        List<Friend> friendList = friendService.findAll(id);
+    public Result findAll(@RequestParam Integer userId) {
+        List<Friend> friendList = friendService.findAll(userId);
         List<Map<String, Object>> friendInfoList = new ArrayList<>();
         for (Friend friend : friendList) {
             Map<String, Object> friendInfo = new HashMap<>();

@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff8167c7-afd3-4c1d-a9f1-36fa7952d0b3" name="更改" comment="Result类版本更新">
+    <list default="true" id="ff8167c7-afd3-4c1d-a9f1-36fa7952d0b3" name="更改" comment="friend在线列表，多表联查&amp;排序">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/controller/FriendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/controller/FriendController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/entity/Friend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/entity/Friend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/FriendMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/FriendMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/controller/UserController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +153,7 @@
       <workItem from="1732673796171" duration="19081000" />
       <workItem from="1732707633753" duration="3730000" />
       <workItem from="1732711382674" duration="3935000" />
-      <workItem from="1732716940225" duration="28078000" />
+      <workItem from="1732716940225" duration="32032000" />
     </task>
     <task id="LOCAL-00001" summary="框架Demo">
       <option name="closed" value="true" />
@@ -300,7 +299,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732773402660</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="friend在线列表，多表联查&amp;排序">
+      <option name="closed" value="true" />
+      <created>1732779231751</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1732779231751</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,6 +352,7 @@
     <MESSAGE value="更改websocket，使聊天用socket通信，其余时候用http请求" />
     <MESSAGE value="登录注册" />
     <MESSAGE value="Result类版本更新" />
-    <option name="LAST_COMMIT_MESSAGE" value="Result类版本更新" />
+    <MESSAGE value="friend在线列表，多表联查&amp;排序" />
+    <option name="LAST_COMMIT_MESSAGE" value="friend在线列表，多表联查&amp;排序" />
   </component>
 </project>

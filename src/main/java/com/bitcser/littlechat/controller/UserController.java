@@ -76,13 +76,13 @@ public class UserController {
 
     @GetMapping("/findAll")
     public Result findAll() {
-        List<User> userList =  userService.findAll();
+        List<User> userList = userService.findAll();
         return Result.success(userList);
     }
 
     @GetMapping("/findById")
     public Result findById(@RequestParam Integer id) {
-        User user =  userService.findById(id);
+        User user = userService.findById(id);
         return Result.success(user);
     }
 
