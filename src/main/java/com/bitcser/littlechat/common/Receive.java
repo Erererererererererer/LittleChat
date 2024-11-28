@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.Map;
 
+// 控制服务调用，适用于HandlerWebSocket1
 @Component
 public class Receive {
 

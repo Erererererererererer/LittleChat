@@ -63,6 +63,8 @@ public class HandlerWebSocket1 extends SimpleChannelInboundHandler<TextWebSocket
         Channel channel = ctx.channel();
         String text = textWebSocketFrame.text(); // 消息内容
         logger.info("收到消息：{}",  text);
+        //消息格式：user/login/id=1&password=111111
+        //  chat/chat/receiverId=2&message=ooohhhhhhh
 
         String userId = null;
         receive.splitText(text);
