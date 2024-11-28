@@ -17,10 +17,20 @@
         UPDATE `friends` SET user_id = #{userId},  friend_id = #{friendId}, status = #{status}
         WHERE user_id = #{userId} &amp;&amp; friend_id = #{friendId}
     </update>
+    
+    <resultMap id="friends_users" type="com.bitcser.littlechat.entity.Friend">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <association property="user"  javaType="com.bitcser.littlechat.entity.User" column="friend_id" select="selectUserById"/>
+    </resultMap>
 
-    <select id="selectAll" resultType="com.bitcser.littlechat.entity.Friend">
-        SELECT * FROM `friends`
-        WHERE user_id = #{userId} OR friend_id = #{userId}
+    <select id="selectAll" resultMap="friends_users">
+        SELECT * FROM `friends` WHERE user_id = #{userId}
+    </select>
+
+    <select id="selectUserById" resultType="com.bitcser.littlechat.entity.User">
+        SELECT * FROM `users` WHERE id = #{id}
     </select>
 
 </mapper>
