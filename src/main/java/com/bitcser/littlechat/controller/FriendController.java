@@ -33,8 +33,9 @@ public class FriendController {
     }
 
     @GetMapping("/findAll")
-    public Result findAll(@RequestParam Integer userId) {
-        List<Friend> friendList = friendService.findAll(userId);
+    public Result findAll(@RequestParam("userId") String userId) {
+        System.out.println(userId);
+        List<Friend> friendList = friendService.findAll(Integer.valueOf(userId));
         List<Map<String, Object>> friendInfoList = new ArrayList<>();
         for (Friend friend : friendList) {
             Map<String, Object> friendInfo = new HashMap<>();

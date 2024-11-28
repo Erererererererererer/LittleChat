@@ -51,7 +51,7 @@ public class UserService {
         return userMapper.selectByUsername(username);
     }
 
-    // 根据phone查询用户（弃用，因为数据库中phone没有设置唯一约束）
+    // 根据phone查询用户
     public User findByPhone(String phone) {
         return userMapper.selectByPhone(phone);
     }

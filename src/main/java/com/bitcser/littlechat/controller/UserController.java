@@ -16,8 +16,8 @@ public class UserController {
     private UserService userService;
 
     // 登录
-    @GetMapping("/login")
-    public Result login(@RequestParam("id") String userId, @RequestParam("password") String password) {
+    @GetMapping("/loginById")
+    public Result loginById(@RequestParam("id") String userId, @RequestParam("password") String password) {
         // 登录验证
         if (userService.findById(Integer.valueOf(userId)) == null) {
             return Result.error("400", "用户不存在");
@@ -32,24 +32,50 @@ public class UserController {
         }
     }
 
+    @GetMapping("/login")
+    public Result loginByPhone(@RequestParam("phone") String phone, @RequestParam("password") String password) {
+        // 登录验证
+        if (userService.findByPhone(phone) == null) {
+            return Result.error("400", "用户不存在");
+        }
+        Integer userId = userService.findByPhone(phone).getId();
+        if (userService.checkLogin(userId, password)) {
+            // 登录成功，修改为在线
+            userService.updateOnline(userId, true);
+            return Result.success(userId);
+        } else {
+            // 登录失败
+            return Result.error("400", "密码不正确");
+        }
+    }
+
     // 注册
     @GetMapping("/register")
     public Result register(@RequestParam("username") String username, @RequestParam("password") String password,
                            @RequestParam(value = "email", required = false) String email,
                            @RequestParam("phone") String phone,
-                           @RequestParam("gender") String gender) {
+                           @RequestParam(value = "gender", required = false) String gender) {
         // 验证
         if (userService.findByUsername(username) != null) {
             return Result.error("400", "注册失败，用户名重复");
         }
-        if (phone.length() != 11 || phone.charAt(0) != '1') {
+
+        if (phone == null || phone.length() != 11 || phone.charAt(0) != '1') {
             return Result.error("400", "注册失败，手机号错误");
         }
         if (userService.findByPhone(phone) != null) {
             return Result.error("400", "注册失败，手机号重复");
         }
+        if (email == null) {
+            email = "";
+        }
+        if (gender == null) {
+            gender = "0";
+        }
 
-        User user = new User(null, username, password, null, email, phone, Integer.valueOf(gender), 0);
+        System.out.println(username + "/" + password + "/");
+
+        User user = new User(null, username, password, "", email, phone, Integer.valueOf(gender), 0);
         userService.add(user);
         // 根据username查询该用户的ID并返回
         String userID = userService.findByUsername(username).getId().toString();
