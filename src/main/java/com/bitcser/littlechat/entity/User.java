@@ -10,6 +10,17 @@ public class User {
     private Integer gender;
     private Integer online;
 
+    public User(Integer id, String username, String password, String avatar, String email, String phone, Integer gender, Integer online) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.avatar = avatar;
+        this.email = email;
+        this.phone = phone;
+        this.gender = gender;
+        this.online = online;
+    }
+
     @Override
     public String toString() {
         return "User{" +

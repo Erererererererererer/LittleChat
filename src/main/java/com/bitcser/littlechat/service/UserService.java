@@ -1,5 +1,6 @@
 package com.bitcser.littlechat.service;
 
+import com.bitcser.littlechat.entity.ChatRecord;
 import com.bitcser.littlechat.entity.User;
 import com.bitcser.littlechat.mapper.UserMapper;
 import jakarta.annotation.Resource;
@@ -43,6 +44,16 @@ public class UserService {
     // 根据ID查询用户
     public User findById(Integer id) {
         return userMapper.selectById(id);
+    }
+
+    // 根据username查询用户
+    public User findByUsername(String username) {
+        return userMapper.selectByUsername(username);
+    }
+
+    // 根据phone查询用户（弃用，因为数据库中phone没有设置唯一约束）
+    public User findByPhone(String phone) {
+        return userMapper.selectByPhone(phone);
     }
 
     // 用户登录验证

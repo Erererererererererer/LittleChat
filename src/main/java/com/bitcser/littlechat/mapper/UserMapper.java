@@ -23,4 +23,10 @@ public interface UserMapper {
 
     // 根据ID查
     User selectById(Integer id);
+
+    // 根据username查
+    User selectByUsername(String username);
+
+    // 根据phone查
+    User selectByPhone(String phone);
 }
