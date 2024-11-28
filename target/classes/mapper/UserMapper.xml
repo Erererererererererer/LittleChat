@@ -32,4 +32,12 @@
         SELECT * FROM `users` WHERE id = #{id}
     </select>
 
+    <select id="selectByUsername" resultType="com.bitcser.littlechat.entity.User">
+        SELECT * FROM `users` WHERE username = #{username}
+    </select>
+
+    <select id="selectByPhone" resultType="com.bitcser.littlechat.entity.User">
+        SELECT * FROM `users` WHERE phone = #{phone}
+    </select>
+
 </mapper>
