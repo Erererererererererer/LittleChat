@@ -38,4 +38,8 @@ public class ChannelContextUtils {
         channel.writeAndFlush(new TextWebSocketFrame(message));
     }
 
+    public void sendMessage(Channel channel, String message) {
+        channel.writeAndFlush(new TextWebSocketFrame(message));
+    }
+
 }

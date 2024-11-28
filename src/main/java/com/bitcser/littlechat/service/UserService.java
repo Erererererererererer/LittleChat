@@ -35,12 +35,20 @@ public class UserService {
         }
     }
 
+    // 查询所有用户
     public List<User> findAll() {
         return userMapper.selectAll();
     }
 
+    // 根据ID查询用户
     public User findById(Integer id) {
         return userMapper.selectById(id);
+    }
+
+    // 用户登录验证
+    public Boolean checkLogin(Integer userId, String password) {
+        User user = userMapper.selectById(userId);
+        return user.getPassword().equals(password);
     }
 
     // 查询用户是否在线

@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff8167c7-afd3-4c1d-a9f1-36fa7952d0b3" name="更改" comment="更改为全程使用socket请求，而不使用http另发">
+    <list default="true" id="ff8167c7-afd3-4c1d-a9f1-36fa7952d0b3" name="更改" comment="返回消息使用JSON序列化字符串">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/common/Receive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/common/Receive.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/common/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/common/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/websocket/ChannelContextUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/websocket/ChannelContextUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/websocket/netty/HandlerWebSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/websocket/netty/HandlerWebSocket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/websocket/netty/NettyWebSocketStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/websocket/netty/NettyWebSocketStarter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/bitcser/littlechat/common/Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bitcser/littlechat/common/Result.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -155,7 +157,7 @@
       <workItem from="1732673796171" duration="19081000" />
       <workItem from="1732707633753" duration="3730000" />
       <workItem from="1732711382674" duration="3935000" />
-      <workItem from="1732716940225" duration="10323000" />
+      <workItem from="1732716940225" duration="12873000" />
     </task>
     <task id="LOCAL-00001" summary="框架Demo">
       <option name="closed" value="true" />
@@ -245,11 +247,30 @@
       <option name="project" value="LOCAL" />
       <updated>1732724213777</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="返回消息使用JSON序列化字符串">
+      <option name="closed" value="true" />
+      <created>1732729053186</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1732729053186</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="GitHub.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -272,6 +293,7 @@
     <MESSAGE value="websocket-离线消息" />
     <MESSAGE value="新增friend、message、chatRecord" />
     <MESSAGE value="更改为全程使用socket请求，而不使用http另发" />
-    <option name="LAST_COMMIT_MESSAGE" value="更改为全程使用socket请求，而不使用http另发" />
+    <MESSAGE value="返回消息使用JSON序列化字符串" />
+    <option name="LAST_COMMIT_MESSAGE" value="返回消息使用JSON序列化字符串" />
   </component>
 </project>

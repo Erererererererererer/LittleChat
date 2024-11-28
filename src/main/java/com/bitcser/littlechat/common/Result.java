@@ -5,6 +5,7 @@ package com.bitcser.littlechat.common;
  */
 public class Result {
 
+    private String senderId;
     private String receiverId;
     private String code;
     private String msg;
@@ -36,6 +37,14 @@ public class Result {
 
     public void setData(Object data) {
         this.data = data;
+    }
+
+    public String getSenderId() {
+        return senderId;
+    }
+
+    public void setSenderId(String senderId) {
+        this.senderId = senderId;
     }
 
     public String getReceiverId() {

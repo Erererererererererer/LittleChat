@@ -64,6 +64,7 @@ public class HandlerWebSocket extends SimpleChannelInboundHandler<TextWebSocketF
     protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame textWebSocketFrame) throws Exception {
         Channel channel = ctx.channel();
         String text = textWebSocketFrame.text(); // 消息内容
+        logger.info("收到消息：{}",  text);
 
         String userId = null;
         receive.splitText(text);
@@ -76,18 +77,24 @@ public class HandlerWebSocket extends SimpleChannelInboundHandler<TextWebSocketF
             Attribute<String> attribute = channel.attr(AttributeKey.valueOf(channel.id().toString()));
             userId = attribute.get();
         }
+
+        // 调用Service进行处理
         Result result = receive.runService();
+        result.setSenderId(userId);
 
         // 发送反馈消息
-        String receiverId = result.getReceiverId();
         // 将Result对象序列化为JSON字符串
         ObjectMapper mapper = new ObjectMapper();
         String message = mapper.writeValueAsString(result);
-        channelContextUtils.sendMessage(userId, message);
+        channelContextUtils.sendMessage(channel, message);
+        // channelContextUtils.sendMessage(userId, message);
+        // 发送聊天消息（如果用户在线，则直接发送；不在线则存数据库）
+        String receiverId = result.getReceiverId();
         if (receiverId != null) {
-            // 发送聊天消息（如果用户在线，则直接发送；不在线则存数据库）
             if (userService.online(Integer.valueOf(receiverId))) {
+                // 发送，存message
                 channelContextUtils.sendMessage(receiverId, message);
+                messageService.add(Integer.valueOf(userId), Integer.valueOf(receiverId), (String)result.getData());
             } else {
                 // 存message，更新record
                 messageService.add(Integer.valueOf(userId), Integer.valueOf(receiverId), (String)result.getData());
