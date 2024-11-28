@@ -2,6 +2,7 @@ package com.bitcser.littlechat.websocket.netty;
 
 import com.bitcser.littlechat.common.Receive;
 import com.bitcser.littlechat.common.Result;
+import com.bitcser.littlechat.common.Result0;
 import com.bitcser.littlechat.service.ChatRecordSevice;
 import com.bitcser.littlechat.service.MessageService;
 import com.bitcser.littlechat.service.UserService;
@@ -79,7 +80,7 @@ public class HandlerWebSocket1 extends SimpleChannelInboundHandler<TextWebSocket
         }
 
         // 调用Service进行处理
-        Result result = receive.runService();
+        Result0 result = receive.runService();
         result.setSenderId(userId);
 
         // 发送反馈消息

@@ -82,7 +82,7 @@ public class Receive {
         this.splitParams();
     }
 
-    public Result runService() {
+    public Result0 runService() {
         try {
             switch (this.module) {
                 case "user": {
@@ -96,19 +96,19 @@ public class Receive {
 
                             // 验证
                             if (userService.findByUsername(username) != null) {
-                                return Result.error("400", "注册失败，用户名重复");
+                                return Result0.error("400", "注册失败，用户名重复");
                             }
                             if (phone.length() != 11 || phone.charAt(0) != '1') {
-                                return Result.error("400", "注册失败，手机号错误");
+                                return Result0.error("400", "注册失败，手机号错误");
                             }
                             if (userService.findByPhone(phone) != null) {
-                                return Result.error("400", "注册失败，手机号重复");
+                                return Result0.error("400", "注册失败，手机号重复");
                             }
 
                             userService.add(user);
                             // 根据username查询该用户的ID并返回
                             String userID = userService.findByUsername(username).getId().toString();
-                            return Result.success(userID);
+                            return Result0.success(userID);
                         }
 
                         case "login": { // 登录
@@ -119,10 +119,10 @@ public class Receive {
                             if (userService.checkLogin(Integer.valueOf(userId), password)) {
                                 // 登录成功，修改为在线
                                 userService.updateOnline(Integer.valueOf(userId), true);
-                                return Result.success();
+                                return Result0.success();
                             } else {
                                 // 登录失败
-                                return Result.error("400", "密码不正确");
+                                return Result0.error("400", "密码不正确");
                             }
                         }
 
@@ -133,7 +133,7 @@ public class Receive {
                         case "chat": { // 聊天
                             String receiverId = this.paramsMap.get("receiverId");
                             String message = this.paramsMap.get("message");
-                            Result result = Result.success();
+                            Result0 result = Result0.success();
                             result.setReceiverId(receiverId);
                             result.setData(message);
                             return result;
@@ -142,10 +142,10 @@ public class Receive {
                 }
             }
 
-            return Result.error("404", "请求无法解析");
+            return Result0.error("404", "请求无法解析");
         } catch (Exception e) {
             logger.info(e.getMessage());
-            return Result.error("500", e.getMessage());
+            return Result0.error("500", e.getMessage());
         }
 
     }
