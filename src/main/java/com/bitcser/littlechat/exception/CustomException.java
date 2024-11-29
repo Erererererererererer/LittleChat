@@ -2,19 +2,19 @@ package com.bitcser.littlechat.exception;
 
 //自定义异常
 public class CustomException extends RuntimeException {
-    private String code;
+    private Integer code;
     private String msg;
 
-    public CustomException(String code, String msg) {
+    public CustomException(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
     }
 
-    public String getCode() {
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 

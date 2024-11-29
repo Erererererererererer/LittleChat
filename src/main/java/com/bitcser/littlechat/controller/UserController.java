@@ -20,7 +20,7 @@ public class UserController {
     public Result loginById(@RequestParam("id") String userId, @RequestParam("password") String password) {
         // 登录验证
         if (userService.findById(Integer.valueOf(userId)) == null) {
-            return Result.error("400", "用户不存在");
+            return Result.error(400, "用户不存在");
         }
         if (userService.checkLogin(Integer.valueOf(userId), password)) {
             // 登录成功，修改为在线
@@ -28,7 +28,7 @@ public class UserController {
             return Result.success();
         } else {
             // 登录失败
-            return Result.error("400", "密码不正确");
+            return Result.error(400, "密码不正确");
         }
     }
 
@@ -36,7 +36,7 @@ public class UserController {
     public Result loginByPhone(@RequestParam("phone") String phone, @RequestParam("password") String password) {
         // 登录验证
         if (userService.findByPhone(phone) == null) {
-            return Result.error("400", "用户不存在");
+            return Result.error(400, "用户不存在");
         }
         Integer userId = userService.findByPhone(phone).getId();
         if (userService.checkLogin(userId, password)) {
@@ -45,7 +45,7 @@ public class UserController {
             return Result.success(userId);
         } else {
             // 登录失败
-            return Result.error("400", "密码不正确");
+            return Result.error(400, "密码不正确");
         }
     }
 
@@ -57,14 +57,14 @@ public class UserController {
                            @RequestParam(value = "gender", required = false) String gender) {
         // 验证
         if (userService.findByUsername(username) != null) {
-            return Result.error("400", "注册失败，用户名重复");
+            return Result.error(400, "注册失败，用户名重复");
         }
 
         if (phone == null || phone.length() != 11 || phone.charAt(0) != '1') {
-            return Result.error("400", "注册失败，手机号错误");
+            return Result.error(400, "注册失败，手机号错误");
         }
         if (userService.findByPhone(phone) != null) {
-            return Result.error("400", "注册失败，手机号重复");
+            return Result.error(400, "注册失败，手机号重复");
         }
         if (email == null) {
             email = "";
