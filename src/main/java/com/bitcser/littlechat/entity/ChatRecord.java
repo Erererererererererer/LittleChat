@@ -10,6 +10,7 @@ public class ChatRecord {
     private Timestamp updatedAt;
     private Integer unreadCount;
     private Integer isGroup;
+    private User sender;
 
     public ChatRecord(Integer id, Integer senderId, Integer receiverId, String lastMessage, Timestamp updatedAt, Integer unreadCount, Integer isGroup) {
         this.id = id;
@@ -19,19 +20,6 @@ public class ChatRecord {
         this.updatedAt = updatedAt;
         this.unreadCount = unreadCount;
         this.isGroup = isGroup;
-    }
-
-    @Override
-    public String toString() {
-        return "ChatRecord{" +
-                "id=" + id +
-                ", senderId=" + senderId +
-                ", receiverId=" + receiverId +
-                ", lastMessage='" + lastMessage +
-                ", updatedAt=" + updatedAt +
-                ", unreadCount=" + unreadCount +
-                ", isGroup=" + isGroup +
-                '}';
     }
 
     public Integer getId() {
@@ -88,5 +76,13 @@ public class ChatRecord {
 
     public void setIsGroup(Integer isGroup) {
         this.isGroup = isGroup;
+    }
+
+    public User getSender() {
+        return sender;
+    }
+
+    public void setSender(User sender) {
+        this.sender = sender;
     }
 }

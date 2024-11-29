@@ -34,7 +34,6 @@ public class FriendController {
 
     @GetMapping("/findAll")
     public Result findAll(@RequestParam("userId") String userId) {
-        System.out.println(userId);
         List<Friend> friendList = friendService.findAll(Integer.valueOf(userId));
         List<Map<String, Object>> friendInfoList = new ArrayList<>();
         for (Friend friend : friendList) {
@@ -58,13 +57,13 @@ public class FriendController {
                 return one.compareTo(two);
             }
         });
-        Collections.sort(friendInfoList, new Comparator<Map<String, Object>>() {
-            public int compare(Map<String, Object> o1, Map<String, Object> o2) {
-                Integer one = Integer.valueOf(o1.get("online").toString());
-                Integer two = Integer.valueOf(o2.get("online").toString());
-                return -one.compareTo(two);
-            }
-        });
+//        Collections.sort(friendInfoList, new Comparator<Map<String, Object>>() {
+//            public int compare(Map<String, Object> o1, Map<String, Object> o2) {
+//                Integer one = Integer.valueOf(o1.get("online").toString());
+//                Integer two = Integer.valueOf(o2.get("online").toString());
+//                return -one.compareTo(two);
+//            }
+//        });
         return Result.success(friendInfoList);
     }
 }

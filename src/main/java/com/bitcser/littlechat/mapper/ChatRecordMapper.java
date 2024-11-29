@@ -12,8 +12,8 @@ public interface ChatRecordMapper {
     // 根据ID改
     void updateById(ChatRecord chatRecord);
 
-    // 根据发送者ID查所有
-    List<ChatRecord> selectAll(Integer senderId);
+    // 根据接收者ID查所有
+    List<ChatRecord> selectAll(Integer receiverId);
 
     // 根据发送者和接受者ID查
     ChatRecord selectByIds(Integer senderId, Integer receiverId);

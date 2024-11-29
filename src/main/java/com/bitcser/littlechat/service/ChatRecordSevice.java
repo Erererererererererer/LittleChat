@@ -42,9 +42,9 @@ public class ChatRecordSevice {
         }
     }
 
-    // 查询所有某人发出的所有会话
-    public List<ChatRecord> findAll(Integer senderId) {
-        return chatRecordMapper.selectAll(senderId);
+    // 查询所有某人收到的所有会话
+    public List<ChatRecord> findAll(Integer receiverId) {
+        return chatRecordMapper.selectAll(receiverId);
     }
 
     // 查询会话记录
