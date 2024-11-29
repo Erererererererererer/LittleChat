@@ -75,6 +75,11 @@ public class HandlerWebSocket extends SimpleChannelInboundHandler<TextWebSocketF
 
         String method = text.split("/")[0];
         if (method.equals("login")) {
+            if (text.split("/").length != 3) {
+                // 无法解析，格式错误
+                channelContextUtils.sendMessage(channel, "error");
+                return;
+            }
             String userId = text.split("/")[1];
             String allowedSenderId = text.split("/")[2];
             // 修改在线可见状态

@@ -42,7 +42,7 @@ public class MessageController {
     }
 
     @GetMapping("/findAll")
-    public Result findAll(@RequestParam Integer userId, @RequestParam Integer friendId) {
+    public Result findAll(@RequestParam("userId") Integer userId, @RequestParam("friendId") Integer friendId) {
         List<Message> messageList = messageService.findAll(userId, friendId);
 
         List<Map<String, Object>> messageInfoList = new ArrayList<>();
@@ -61,4 +61,5 @@ public class MessageController {
 
         return Result.success(messageInfoList);
     }
+
 }

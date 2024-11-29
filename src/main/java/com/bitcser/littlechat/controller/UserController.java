@@ -107,7 +107,7 @@ public class UserController {
     }
 
     @GetMapping("/findById")
-    public Result findById(@RequestParam Integer id) {
+    public Result findById(@RequestParam("id") Integer id) {
         User user = userService.findById(id);
         return Result.success(user);
     }
