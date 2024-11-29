@@ -18,4 +18,6 @@ public interface FriendMapper {
     // 查询用户i的所有好友
     List<Friend> selectAll(Integer userId);
 
+    // 查询用户i收到的好友申请
+    List<Friend> selectAllByFriendId(Integer friendId);
 }

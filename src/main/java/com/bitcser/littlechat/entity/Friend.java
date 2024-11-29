@@ -9,6 +9,13 @@ public class Friend {
     private Integer status;
     private User user; // 用于联合查询
 
+    public Friend(Integer id, Integer userId, Integer friendId, Integer status) {
+        this.id = id;
+        this.userId = userId;
+        this.friendId = friendId;
+        this.status = status;
+    }
+
     public Integer getId() {
         return id;
     }

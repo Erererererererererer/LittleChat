@@ -24,13 +24,21 @@
         <result column="status" property="status" jdbcType="INTEGER"/>
         <association property="user"  javaType="com.bitcser.littlechat.entity.User" column="friend_id" select="selectUserById"/>
     </resultMap>
-
     <select id="selectAll" resultMap="friends_users">
         SELECT * FROM `friends` WHERE user_id = #{userId}
     </select>
-
     <select id="selectUserById" resultType="com.bitcser.littlechat.entity.User">
         SELECT * FROM `users` WHERE id = #{id}
+    </select>
+
+    <resultMap id="friends_users2" type="com.bitcser.littlechat.entity.Friend">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="friend_id" property="friendId" jdbcType="INTEGER"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <association property="user"  javaType="com.bitcser.littlechat.entity.User" column="user_id" select="selectUserById"/>
+    </resultMap>
+    <select id="selectAllByFriendId" resultMap="friends_users2">
+        SELECT * FROM `friends` WHERE friend_id = #{friendId}
     </select>
 
 </mapper>
