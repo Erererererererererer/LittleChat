@@ -14,6 +14,11 @@
         WHERE id = #{id}
     </update>
 
+    <update id="updateUnreadCount" parameterType="com.bitcser.littlechat.entity.ChatRecord">
+        UPDATE `chat_records` SET unread_count = 0
+        WHERE sender_id = #{senderId} AND receiver_id = #{receiverId}
+    </update>
+
     <resultMap id="chatrecords_users" type="com.bitcser.littlechat.entity.ChatRecord">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="last_message" property="lastMessage" jdbcType="VARCHAR"/>
@@ -21,11 +26,9 @@
         <result column="unread_count" property="unreadCount" jdbcType="INTEGER"/>
         <association property="sender"  javaType="com.bitcser.littlechat.entity.User" column="sender_id" select="selectUserById"/>
     </resultMap>
-
     <select id="selectAll" resultMap="chatrecords_users">
         SELECT * FROM `chat_records` WHERE receiver_id = #{receiverId}
     </select>
-
     <select id="selectUserById" resultType="com.bitcser.littlechat.entity.User">
         SELECT * FROM `users` WHERE id = #{id}
     </select>

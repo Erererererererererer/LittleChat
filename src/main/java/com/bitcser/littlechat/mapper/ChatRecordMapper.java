@@ -12,6 +12,9 @@ public interface ChatRecordMapper {
     // 根据ID改
     void updateById(ChatRecord chatRecord);
 
+    // 修改未读消息为0条
+    void updateUnreadCount(Integer senderId, Integer receiverId);
+
     // 根据接收者ID查所有
     List<ChatRecord> selectAll(Integer receiverId);
 

@@ -3,6 +3,7 @@ package com.bitcser.littlechat.controller;
 import com.bitcser.littlechat.common.Result;
 import com.bitcser.littlechat.entity.Friend;
 import com.bitcser.littlechat.entity.Message;
+import com.bitcser.littlechat.service.ChatRecordSevice;
 import com.bitcser.littlechat.service.MessageService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,9 @@ public class MessageController {
 
     @Resource
     private MessageService messageService;
+
+    @Resource
+    private ChatRecordSevice chatRecordSevice;
 
     @PostMapping("/add")
     public Result add(@RequestBody Message message) {
@@ -51,6 +55,9 @@ public class MessageController {
             messageInfo.put("time", time);
             messageInfoList.add(messageInfo);
         }
+
+        // 同时清理未读消息
+        chatRecordSevice.updateUnread(friendId, userId);
 
         return Result.success(messageInfoList);
     }

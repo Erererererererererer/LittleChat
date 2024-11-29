@@ -77,6 +77,13 @@ public class HandlerWebSocket extends SimpleChannelInboundHandler<TextWebSocketF
             String userId = text.split("/")[1];
             // 绑定channel和用户ID
             channelContextUtils.addContext(userId, ctx.channel());
+        } else if (method.equals("friend")) {
+            String receiverId = text.split("/")[1];
+
+            // 获取用户ID
+            Attribute<String> attribute = channel.attr(AttributeKey.valueOf(channel.id().toString()));
+            String userId = attribute.get();
+
         } else if (method.equals("chat")) {
             String receiverId = text.split("/")[1];
             String message = text.split("/")[2];
@@ -88,7 +95,7 @@ public class HandlerWebSocket extends SimpleChannelInboundHandler<TextWebSocketF
             // 发送聊天消息（如果用户在线，则直接发送；不在线则存数据库）
             if (userService.online(Integer.valueOf(receiverId))) {
                 // 发送，存message
-                channelContextUtils.sendMessage(receiverId, "chat/" + userId + "/" + message);
+                channelContextUtils.sendMessage(receiverId, "chat/" + userId + "/" + receiverId + "/" + message);
                 messageService.add(Integer.valueOf(userId), Integer.valueOf(receiverId), message);
             } else {
                 // 存message，更新record

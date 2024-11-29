@@ -42,6 +42,11 @@ public class ChatRecordSevice {
         }
     }
 
+    // 更新为全部已读
+    public void updateUnread(Integer senderId, Integer receiverId) {
+        chatRecordMapper.updateUnreadCount(senderId, receiverId);
+    }
+
     // 查询所有某人收到的所有会话
     public List<ChatRecord> findAll(Integer receiverId) {
         return chatRecordMapper.selectAll(receiverId);
