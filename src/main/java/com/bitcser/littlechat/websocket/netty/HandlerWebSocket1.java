@@ -99,7 +99,7 @@ public class HandlerWebSocket1 extends SimpleChannelInboundHandler<TextWebSocket
             } else {
                 // 存message，更新record
                 messageService.add(Integer.valueOf(userId), Integer.valueOf(receiverId), (String)result.getData());
-                chatRecordSevice.update(Integer.valueOf(userId), Integer.valueOf(receiverId), (String)result.getData());
+                chatRecordSevice.update(Integer.valueOf(userId), Integer.valueOf(receiverId), (String)result.getData(), 1);
             }
         }
     }

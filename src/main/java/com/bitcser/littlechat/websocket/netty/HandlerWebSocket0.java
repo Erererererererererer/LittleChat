@@ -71,7 +71,7 @@ public class HandlerWebSocket0 extends SimpleChannelInboundHandler<TextWebSocket
         } else {
             // 存message，更新record
             messageService.add(Integer.valueOf(userId), Integer.valueOf(receiverId), message);
-            chatRecordSevice.update(Integer.valueOf(userId), Integer.valueOf(receiverId), message);
+            chatRecordSevice.update(Integer.valueOf(userId), Integer.valueOf(receiverId), message, 1);
         }
     }
 

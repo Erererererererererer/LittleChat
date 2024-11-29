@@ -104,13 +104,14 @@ public class HandlerWebSocket extends SimpleChannelInboundHandler<TextWebSocketF
             // 发送聊天消息（如果用户在线，则直接发送；不在线则存数据库）
             //if (userService.online(Integer.valueOf(receiverId))) {
             if (userService.view(Integer.valueOf(receiverId), Integer.valueOf(userId))) {
-                // 发送，存message
+                // 发送，存message，更新record（但是不增加未读消息数）
                 channelContextUtils.sendMessage(receiverId, "chat/" + userId + "/" + receiverId + "/" + message);
                 messageService.add(Integer.valueOf(userId), Integer.valueOf(receiverId), message);
+                chatRecordSevice.update(Integer.valueOf(userId), Integer.valueOf(receiverId), message, 0);
             } else {
                 // 存message，更新record
                 messageService.add(Integer.valueOf(userId), Integer.valueOf(receiverId), message);
-                chatRecordSevice.update(Integer.valueOf(userId), Integer.valueOf(receiverId), message);
+                chatRecordSevice.update(Integer.valueOf(userId), Integer.valueOf(receiverId), message, 1);
             }
         }
     }

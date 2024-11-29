@@ -27,7 +27,7 @@ public class ChatRecordSevice {
     }
 
     // 更新会话记录
-    public void update(Integer senderId, Integer receiverId, String lastMessage) {
+    public void update(Integer senderId, Integer receiverId, String lastMessage, Integer countAdd) {
         // 先查询会话是否存在
         ChatRecord chatRecord = findByIds(senderId, receiverId);
         if (chatRecord == null) {
@@ -37,7 +37,7 @@ public class ChatRecordSevice {
             // 如果会话存在，更新最后一条记录、最后一条的时间、未读消息数
             chatRecord.setLastMessage(lastMessage);
             chatRecord.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
-            chatRecord.setUnreadCount(chatRecord.getUnreadCount() + 1);
+            chatRecord.setUnreadCount(chatRecord.getUnreadCount() + countAdd);
             chatRecordMapper.updateById(chatRecord);
         }
     }

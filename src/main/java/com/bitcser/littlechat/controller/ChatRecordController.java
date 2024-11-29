@@ -45,7 +45,7 @@ public class ChatRecordController {
 
     @PutMapping("/update")
     public Result update(@RequestBody ChatRecord chatrecord) {
-        chatrecordService.update(chatrecord.getSenderId(), chatrecord.getReceiverId(), chatrecord.getLastMessage());
+        chatrecordService.update(chatrecord.getSenderId(), chatrecord.getReceiverId(), chatrecord.getLastMessage(), 1);
         return Result.success();
     }
 
