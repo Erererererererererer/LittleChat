@@ -48,8 +48,13 @@ public class ChatRecordSevice {
     }
 
     // 查询所有某人收到的所有会话
-    public List<ChatRecord> findAll(Integer receiverId) {
-        return chatRecordMapper.selectAll(receiverId);
+    public List<ChatRecord> findAllByReceiverId(Integer receiverId) {
+        return chatRecordMapper.selectAllByReceiverId(receiverId);
+    }
+
+    // 查询所有某人发出的所有会话
+    public List<ChatRecord> findAllBySenderId(Integer senderId) {
+        return chatRecordMapper.selectAllBySenderId(senderId);
     }
 
     // 查询会话记录

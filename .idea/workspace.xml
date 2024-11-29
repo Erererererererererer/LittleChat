@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff8167c7-afd3-4c1d-a9f1-36fa7952d0b3" name="更改" comment="friend添加/删除好友">
+    <list default="true" id="ff8167c7-afd3-4c1d-a9f1-36fa7952d0b3" name="更改" comment="修改chatrecord，存最后一条消息，不论是否未读">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/controller/ChatRecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/controller/ChatRecordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/entity/ChatRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/entity/ChatRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/mapper/ChatRecordMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/mapper/ChatRecordMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/service/ChatRecordSevice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/service/ChatRecordSevice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/websocket/netty/HandlerWebSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/websocket/netty/HandlerWebSocket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/websocket/netty/HandlerWebSocket0.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/websocket/netty/HandlerWebSocket0.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/websocket/netty/HandlerWebSocket1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/websocket/netty/HandlerWebSocket1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ChatRecordMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ChatRecordMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +160,7 @@
       <workItem from="1732813551833" duration="3481000" />
       <workItem from="1732860759028" duration="1348000" />
       <workItem from="1732862211126" duration="9875000" />
-      <workItem from="1732880845784" duration="15350000" />
+      <workItem from="1732880845784" duration="18544000" />
     </task>
     <task id="LOCAL-00001" summary="框架Demo">
       <option name="closed" value="true" />
@@ -394,7 +394,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732896771731</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="修改chatrecord，存最后一条消息，不论是否未读">
+      <option name="closed" value="true" />
+      <created>1732897768292</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1732897768292</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -423,7 +431,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="users表的增删查改" />
     <MESSAGE value="新增实体类" />
     <MESSAGE value="FriendMapper" />
     <MESSAGE value="netty初始化" />
@@ -448,6 +455,7 @@
     <MESSAGE value="修改在线逻辑，用户进入某对话框时再建立socket连接，退出时关闭" />
     <MESSAGE value="message" />
     <MESSAGE value="friend添加/删除好友" />
-    <option name="LAST_COMMIT_MESSAGE" value="friend添加/删除好友" />
+    <MESSAGE value="修改chatrecord，存最后一条消息，不论是否未读" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改chatrecord，存最后一条消息，不论是否未读" />
   </component>
 </project>

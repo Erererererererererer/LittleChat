@@ -24,13 +24,24 @@
         <result column="last_message" property="lastMessage" jdbcType="VARCHAR"/>
         <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP"/>
         <result column="unread_count" property="unreadCount" jdbcType="INTEGER"/>
-        <association property="sender"  javaType="com.bitcser.littlechat.entity.User" column="sender_id" select="selectUserById"/>
+        <association property="friendId"  javaType="com.bitcser.littlechat.entity.User" column="sender_id" select="selectUserById"/>
     </resultMap>
-    <select id="selectAll" resultMap="chatrecords_users">
+    <select id="selectAllByReceiverId" resultMap="chatrecords_users">
         SELECT * FROM `chat_records` WHERE receiver_id = #{receiverId}
     </select>
     <select id="selectUserById" resultType="com.bitcser.littlechat.entity.User">
         SELECT * FROM `users` WHERE id = #{id}
+    </select>
+
+    <resultMap id="chatrecords_users2" type="com.bitcser.littlechat.entity.ChatRecord">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="last_message" property="lastMessage" jdbcType="VARCHAR"/>
+        <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP"/>
+        <result column="unread_count" property="unreadCount" jdbcType="INTEGER"/>
+        <association property="friendId"  javaType="com.bitcser.littlechat.entity.User" column="receiver_id" select="selectUserById"/>
+    </resultMap>
+    <select id="selectAllBySenderId" resultMap="chatrecords_users2">
+        SELECT * FROM `chat_records` WHERE sender_id = #{senderId}
     </select>
 
 

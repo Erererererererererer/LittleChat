@@ -10,7 +10,7 @@ public class ChatRecord {
     private Timestamp updatedAt;
     private Integer unreadCount;
     private Integer isGroup;
-    private User sender;
+    private User friendId;
 
     public ChatRecord(Integer id, Integer senderId, Integer receiverId, String lastMessage, Timestamp updatedAt, Integer unreadCount, Integer isGroup) {
         this.id = id;
@@ -78,11 +78,11 @@ public class ChatRecord {
         this.isGroup = isGroup;
     }
 
-    public User getSender() {
-        return sender;
+    public User getFriendId() {
+        return friendId;
     }
 
-    public void setSender(User sender) {
-        this.sender = sender;
+    public void setFriendId(User friendId) {
+        this.friendId = friendId;
     }
 }

@@ -16,7 +16,10 @@ public interface ChatRecordMapper {
     void updateUnreadCount(Integer senderId, Integer receiverId);
 
     // 根据接收者ID查所有
-    List<ChatRecord> selectAll(Integer receiverId);
+    List<ChatRecord> selectAllByReceiverId(Integer receiverId);
+
+    // 根据发送者ID查所有
+    List<ChatRecord> selectAllBySenderId(Integer SenderId);
 
     // 根据发送者和接受者ID查
     ChatRecord selectByIds(Integer senderId, Integer receiverId);
