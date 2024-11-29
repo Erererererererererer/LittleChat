@@ -30,7 +30,7 @@ public class MessageService {
         messageMapper.updateById(message);
     }
 
-    public List<Message> findAll(Integer senderId, Integer receiverId) {
-        return messageMapper.selectAll(senderId, receiverId);
+    public List<Message> findAll(Integer userId, Integer friendId) {
+        return messageMapper.selectAll(userId, friendId);
     }
 }

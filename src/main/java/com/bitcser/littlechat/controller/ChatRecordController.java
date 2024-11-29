@@ -17,6 +17,7 @@ public class ChatRecordController {
     @GetMapping("/findAll")
     public Result findAll(@RequestParam("receiverId") Integer receiverId) {
         List<ChatRecord> chatRecordList = chatrecordService.findAll(receiverId);
+
         List<Map<String, Object>> chatRecordInfoList = new ArrayList<>();
         for (ChatRecord chatRecord : chatRecordList) {
             Map<String, Object> chatRecordInfo = new HashMap<>();
