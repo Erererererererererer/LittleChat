@@ -7,6 +7,7 @@ import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class UserService {
@@ -34,6 +35,11 @@ public class UserService {
         } else {
             userMapper.updateOnlineById(id, 0);
         }
+    }
+
+    // 更新用户当前聊天框，0表示不在任意一个聊天框
+    public void updateView(Integer id, Integer allowedSenderId) {
+        userMapper.updateOnlineById(id, allowedSenderId);
     }
 
     // 查询所有用户
@@ -66,5 +72,10 @@ public class UserService {
     public Boolean online(Integer id) {
         Integer online = userMapper.selectById(id).getOnline();
         return online == 1;
+    }
+
+    public Boolean view(Integer id, Integer allowedSenderId) {
+        Integer online = userMapper.selectById(id).getOnline();
+        return Objects.equals(online, allowedSenderId);
     }
 }

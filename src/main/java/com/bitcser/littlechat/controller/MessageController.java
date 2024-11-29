@@ -57,7 +57,7 @@ public class MessageController {
         }
 
         // 同时清理未读消息
-        chatRecordSevice.updateUnread(friendId, userId);
+        //chatRecordSevice.updateUnread(friendId, userId);
 
         return Result.success(messageInfoList);
     }

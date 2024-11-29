@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff8167c7-afd3-4c1d-a9f1-36fa7952d0b3" name="更改" comment="未读消息逻辑">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/common/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/common/Result.java" afterDir="false" />
+    <list default="true" id="ff8167c7-afd3-4c1d-a9f1-36fa7952d0b3" name="更改" comment="Result类里code改为int类型">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/controller/MessageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/exception/CustomException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/exception/CustomException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bitcser/littlechat/common/Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bitcser/littlechat/common/Result.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/websocket/netty/HandlerWebSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/websocket/netty/HandlerWebSocket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/bitcser/littlechat/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bitcser/littlechat/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bitcser/littlechat/exception/CustomException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bitcser/littlechat/exception/CustomException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bitcser/littlechat/exception/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bitcser/littlechat/exception/GlobalExceptionHandler.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +159,7 @@
       <workItem from="1732716940225" duration="35521000" />
       <workItem from="1732813551833" duration="3481000" />
       <workItem from="1732860759028" duration="1348000" />
-      <workItem from="1732862211126" duration="6625000" />
+      <workItem from="1732862211126" duration="9443000" />
     </task>
     <task id="LOCAL-00001" summary="框架Demo">
       <option name="closed" value="true" />
@@ -354,7 +353,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732868688448</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Result类里code改为int类型">
+      <option name="closed" value="true" />
+      <created>1732869029673</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1732869029673</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -405,6 +412,7 @@
     <MESSAGE value="chatRecord查询" />
     <MESSAGE value="message查询" />
     <MESSAGE value="未读消息逻辑" />
-    <option name="LAST_COMMIT_MESSAGE" value="未读消息逻辑" />
+    <MESSAGE value="Result类里code改为int类型" />
+    <option name="LAST_COMMIT_MESSAGE" value="Result类里code改为int类型" />
   </component>
 </project>

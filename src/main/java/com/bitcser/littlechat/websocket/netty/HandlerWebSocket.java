@@ -57,7 +57,8 @@ public class HandlerWebSocket extends SimpleChannelInboundHandler<TextWebSocketF
         Attribute<String> attribute = channel.attr(AttributeKey.valueOf(channel.id().toString()));
         String userId = attribute.get();
         // 修改为离线
-        userService.updateOnline(Integer.valueOf(userId), false);
+        //userService.updateOnline(Integer.valueOf(userId), false);
+        userService.updateView(Integer.valueOf(userId), 0);
     }
 
     @Override
@@ -75,6 +76,9 @@ public class HandlerWebSocket extends SimpleChannelInboundHandler<TextWebSocketF
         String method = text.split("/")[0];
         if (method.equals("login")) {
             String userId = text.split("/")[1];
+            String allowedSenderId = text.split("/")[2];
+            // 修改在线可见状态
+            userService.updateView(Integer.valueOf(userId), Integer.valueOf(allowedSenderId));
             // 绑定channel和用户ID
             channelContextUtils.addContext(userId, ctx.channel());
         } else if (method.equals("friend")) {
@@ -93,7 +97,8 @@ public class HandlerWebSocket extends SimpleChannelInboundHandler<TextWebSocketF
             String userId = attribute.get();
 
             // 发送聊天消息（如果用户在线，则直接发送；不在线则存数据库）
-            if (userService.online(Integer.valueOf(receiverId))) {
+            //if (userService.online(Integer.valueOf(receiverId))) {
+            if (userService.view(Integer.valueOf(receiverId), Integer.valueOf(userId))) {
                 // 发送，存message
                 channelContextUtils.sendMessage(receiverId, "chat/" + userId + "/" + receiverId + "/" + message);
                 messageService.add(Integer.valueOf(userId), Integer.valueOf(receiverId), message);

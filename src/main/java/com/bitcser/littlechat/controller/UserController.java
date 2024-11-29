@@ -24,7 +24,7 @@ public class UserController {
         }
         if (userService.checkLogin(Integer.valueOf(userId), password)) {
             // 登录成功，修改为在线
-            userService.updateOnline(Integer.valueOf(userId), true);
+            ///userService.updateOnline(Integer.valueOf(userId), true);
             return Result.success();
         } else {
             // 登录失败
