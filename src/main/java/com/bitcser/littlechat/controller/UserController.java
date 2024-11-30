@@ -75,7 +75,7 @@ public class UserController {
 
         System.out.println(username + "/" + password + "/");
 
-        User user = new User(null, username, password, "", email, phone, Integer.valueOf(gender), 0);
+        User user = new User(null, username, password, "../resources/base/media/touxiang.jpg", email, phone, Integer.valueOf(gender), 0);
         userService.add(user);
         // 根据username查询该用户的ID并返回
         String userID = userService.findByUsername(username).getId().toString();
