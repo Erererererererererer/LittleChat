@@ -12,12 +12,21 @@ public class FriendService {
     @Resource
     private FriendMapper friendMapper;
 
+    @Resource
+    private UserService userService;
+
     public void add(Friend friend) {
         friendMapper.insert(friend);
     }
 
     // 新增一个好友关系
     public void add(Integer userId, Integer friendId, Integer status) {
+        friendMapper.insert(new Friend(null, userId, friendId, status));
+    }
+
+    // 通过手机号
+    public void addByPhone(Integer userId, String friendPhone, Integer status) {
+        Integer friendId = userService.findByPhone(friendPhone).getId();
         friendMapper.insert(new Friend(null, userId, friendId, status));
     }
 

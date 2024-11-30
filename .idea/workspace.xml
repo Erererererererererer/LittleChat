@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff8167c7-afd3-4c1d-a9f1-36fa7952d0b3" name="更改" comment="friend请求方法修改">
+    <list default="true" id="ff8167c7-afd3-4c1d-a9f1-36fa7952d0b3" name="更改" comment="users头像设置">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bitcser/littlechat/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bitcser/littlechat/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/controller/FriendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/controller/FriendController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/service/FriendService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/service/FriendService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +157,7 @@
       <workItem from="1732813551833" duration="3481000" />
       <workItem from="1732860759028" duration="1348000" />
       <workItem from="1732862211126" duration="9875000" />
-      <workItem from="1732880845784" duration="30745000" />
+      <workItem from="1732880845784" duration="32780000" />
     </task>
     <task id="LOCAL-00001" summary="框架Demo">
       <option name="closed" value="true" />
@@ -423,7 +423,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732939613550</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="users头像设置">
+      <option name="closed" value="true" />
+      <created>1732949613455</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1732949613455</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -452,7 +460,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="websocket" />
     <MESSAGE value="websocket-离线消息" />
     <MESSAGE value="新增friend、message、chatRecord" />
     <MESSAGE value="更改为全程使用socket请求，而不使用http另发" />
@@ -477,6 +484,7 @@
     <MESSAGE value="chatrecord/findAll，修改逻辑" />
     <MESSAGE value="unreadCount逻辑修正" />
     <MESSAGE value="friend请求方法修改" />
-    <option name="LAST_COMMIT_MESSAGE" value="friend请求方法修改" />
+    <MESSAGE value="users头像设置" />
+    <option name="LAST_COMMIT_MESSAGE" value="users头像设置" />
   </component>
 </project>

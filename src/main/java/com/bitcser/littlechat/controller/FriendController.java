@@ -20,10 +20,17 @@ public class FriendController {
         return Result.success();
     }
 
-    // 请求添加好友
-    @GetMapping("/request")
+    // 请求添加好友（通过用户ID）
+    @GetMapping("/requestById")
     public Result request(@RequestParam("userId") Integer userId, @RequestParam("friendId") Integer friendId) {
         friendService.add(userId, friendId, 0);
+        return Result.success();
+    }
+
+    // 请求添加好友（通过用户phone）
+    @GetMapping("/request")
+    public Result request(@RequestParam("userId") Integer userId, @RequestParam("phone") String friendPhone) {
+        friendService.addByPhone(userId, friendPhone, 0);
         return Result.success();
     }
 
