@@ -27,7 +27,7 @@ public class FriendController {
         return Result.success();
     }
 
-    @DeleteMapping("/deleteById")
+    @GetMapping("/deleteById")
     public Result delete(@RequestParam("userId") Integer userId, @RequestParam("friendId") Integer friendId) {
         friendService.deleteById(userId, friendId);
         return Result.success();

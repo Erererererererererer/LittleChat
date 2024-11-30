@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff8167c7-afd3-4c1d-a9f1-36fa7952d0b3" name="更改" comment="chatrecord/findAll，修改逻辑">
+    <list default="true" id="ff8167c7-afd3-4c1d-a9f1-36fa7952d0b3" name="更改" comment="unreadCount逻辑修正">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/controller/ChatRecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/controller/ChatRecordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/controller/FriendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bitcser/littlechat/controller/FriendController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +156,7 @@
       <workItem from="1732813551833" duration="3481000" />
       <workItem from="1732860759028" duration="1348000" />
       <workItem from="1732862211126" duration="9875000" />
-      <workItem from="1732880845784" duration="22254000" />
+      <workItem from="1732880845784" duration="23830000" />
     </task>
     <task id="LOCAL-00001" summary="框架Demo">
       <option name="closed" value="true" />
@@ -406,7 +406,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732901309946</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="unreadCount逻辑修正">
+      <option name="closed" value="true" />
+      <created>1732938012268</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1732938012268</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -435,7 +443,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="FriendMapper" />
     <MESSAGE value="netty初始化" />
     <MESSAGE value="websocket" />
     <MESSAGE value="websocket-离线消息" />
@@ -460,6 +467,7 @@
     <MESSAGE value="friend添加/删除好友" />
     <MESSAGE value="修改chatrecord，存最后一条消息，不论是否未读" />
     <MESSAGE value="chatrecord/findAll，修改逻辑" />
-    <option name="LAST_COMMIT_MESSAGE" value="chatrecord/findAll，修改逻辑" />
+    <MESSAGE value="unreadCount逻辑修正" />
+    <option name="LAST_COMMIT_MESSAGE" value="unreadCount逻辑修正" />
   </component>
 </project>
