@@ -52,7 +52,7 @@ public class ChatRecordController {
                             .forEach(map -> {
                                 map.put("lastMessage", chatRecord.getLastMessage());
                                 map.put("updateAt", updateAt_new);
-                                map.put("unreadCount", chatRecord.getUnreadCount());
+                                map.put("unreadCount", 0);  // “我”作为发送者，“我”的未读始终是0
                             });
                 }
                 continue;
@@ -64,7 +64,7 @@ public class ChatRecordController {
             chatRecordInfo.put("lastMessage", chatRecord.getLastMessage());
             String updateAt = chatRecord.getUpdatedAt().toString().split("\\.")[0];
             chatRecordInfo.put("updateAt", updateAt);
-            chatRecordInfo.put("unreadCount", chatRecord.getUnreadCount());
+            chatRecordInfo.put("unreadCount", 0);  // “我”作为发送者，“我”的未读始终是0
             chatRecordInfo.put("username", chatRecord.getFriendId().getUsername());
             chatRecordInfo.put("avatar", chatRecord.getFriendId().getAvatar());
             chatRecordInfoList.add(chatRecordInfo);
